@@ -1,0 +1,17 @@
+
+platform :ios, '8.0'
+
+target 'LoveJX' do
+
+
+pod 'AFNetworking'
+pod 'MJExtension'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
+pod 'MJRefresh'
+pod 'DACircularProgress'
+pod 'FLAnimatedImage'
+pod 'pop'
+
+
+end

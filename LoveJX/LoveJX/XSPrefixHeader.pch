@@ -1,0 +1,189 @@
+//
+//  XSPrefixHeader.pch
+//  LoveJX
+//
+//  Created by xueshan on 17/7/31.
+//  Copyright © 2017年 xueshan. All rights reserved.
+//
+
+#ifndef XSPrefixHeader_pch
+#define XSPrefixHeader_pch
+
+
+#import "UIColor+Hex.h"
+#import "UIButton+FillColor.h"
+#import "UIView+frameAdjust.h"
+
+
+#if DEBUG
+
+#define NSLog(FORMAT, ...) fprintf(stderr,"\n=============开始=====\nfunction:%s \n\nline:%d \n\ncontent:\n%s\n=============结束=====\n", __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+
+//判断是否4英寸的屏幕
+#define SCREEN_4_0 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+//判断是否是4.7大屏幕
+#define SCREEN_4_7 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+//判断非Retina屏幕
+#define SCREEN_NOT_RETINA [UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(320, 480), [UIScreen mainScreen].currentMode.size) : NO
+//判断是否大屏幕5.5
+#define SCREEN_5_5 [UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [UIScreen mainScreen].currentMode.size) : NO
+//是否3.5英寸Retina屏幕
+#define SCREEN_3_5 [UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [UIScreen mainScreen].currentMode.size) : NO
+
+//屏幕尺寸
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
+#define FONT_SYSTEM_SIZE(SIZE) [UIFont systemFontOfSize:(SIZE)]
+
+/**
+ *判断ios版本
+ */
+#define IOS_VERSION  [[[UIDevice currentDevice] systemVersion] floatValue]
+
+/**
+ *取出InfoDictionary version
+ */
+#define GetInfoDictionaryVersion [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleInfoDictionaryVersionKey]
+
+// wxk得到当前app应用版本号 用户可见的版本号 如2.3.4
+#define GetAppCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] //CFBundleShortVersionString
+/**
+ *  长宽度比
+ *
+ */
+///边宽
+#define GOP_LeftWidth (SCREEN_WIDTH*28/621)
+///宽度比
+#define GOP_WidthR (SCREEN_WIDTH/1242)
+///高度比
+#define GOP_HeightR (SCREEN_HEIGHT/2208)
+///按钮高度
+#define GOP_Btn_Height (142*GOP_HeightR)
+///cell高度
+#define GOP_Cell_Height (171*GOP_HeightR)
+
+
+/**
+ *  圆角半径
+ *
+ */
+#define CommonCornerRadius (5.0f)
+/**
+ *  颜色
+ *
+ */
+
+///默认不透明度的
+#define COLOR_WITH_HEX(HEX) [UIColor colorWithHex:(HEX) alpha:1.0f]
+///带透明度的
+#define COLOR_WITH_HEX_ALPHA(HEX,alpha1) [UIColor colorWithHex:(HEX) alpha:(alpha1)]
+
+///导航栏背景颜色
+#define NavBarBackColor_HEX @"e03e3f"
+///主背景颜色
+#define MAIN_BACKGROUND_COLOR_HEX @"f5f5f9"
+///按钮背景颜色
+#define Btn_BackGround_Color_HEX @"e03e3f"
+//#define Btn_BackGround_Color_HEX @"999"
+//999999
+
+/// 系统默认字体颜色
+#define Sys_Font_Color_Hex @"1E90FF"
+
+///提现问号按钮文字颜色
+#define Btn_DrawTitle_HEX @"f89700"
+
+///按钮禁用的背景颜色
+#define Btn_Enabled_BackGround_HEX @"CCCCCC"
+///按钮文字颜色
+#define BtnTitleColor_HEX @"ffffff"
+///cell标题文字颜色
+#define TableViewCellTitleColor_HEX @"333333"
+///交易成功的颜色
+#define TradeSuccessColorHEX @"62ab64"
+///线框颜色
+#define BORDER_COLOR_HEX @"dddddd"
+///西子蓝色
+#define XIZI_BULE_HEX @"53bcf5"
+///Cell的选择颜色
+#define CELL_SELECTED_COLOR_HEX @"f5f5f5"
+///提示语颜色
+#define PROMPT_COLOR_HEX @"8598a1"
+///输入文本颜色
+#define INPUT_TEXT_COLOR_HEX @"404b52"
+///Cell的标题颜色
+#define CELL_SUBJECT_COLOR_HEX @"404b52"
+///内容颜色
+#define CONTENT_TEXT_COLOR_HEX @"404b52"
+///辅助信息颜色
+#define ASSIST_COLOR_HEX @"bbbbbb"
+///辅助信息颜色2
+#define ASSIST_COLOR_2_HEX @"999999"
+///通用分割线颜色
+#define LineColor_HEX @"dcdcdc"
+///通用分割线颜色
+#define LineColor [UIColor colorWithHex:LineColor_HEX alpha:1.0f]
+///导航栏背景颜色
+#define NavBarBackColor [UIColor colorWithHex:NavBarBackColor_HEX alpha:1.0f]
+///背景主色
+#define MAIN_BACKGROUND_COLOR  [UIColor colorWithHex:MAIN_BACKGROUND_COLOR_HEX alpha:1.0f]
+///按钮背景颜色
+#define Btn_BackGround_Color [UIColor colorWithHex:Btn_BackGround_Color_HEX alpha:1.0f]
+///按钮禁用的背景颜色
+#define Btn_Enabled_BackGround_Color [UIColor colorWithHex:Btn_Enabled_BackGround_HEX alpha:1.0f]
+///按钮文字颜色
+#define BtnTitleColor [UIColor colorWithHex:BtnTitleColor_HEX alpha:1.0f]
+///cell标题文字颜色
+#define TableViewCellTitleColor  [UIColor colorWithHex:TableViewCellTitleColor_HEX alpha:1.0f]
+///交易成功的颜色
+#define TradeSuccessColor [UIColor colorWithHex:TradeSuccessColorHEX alpha:1.0f]
+///线框颜色
+#define BORDER_COLOR [UIColor colorWithHex:BORDER_COLOR_HEX alpha:1.0f]
+///西子蓝色
+#define XIZI_BULE [UIColor colorWithHex:XIZI_BULE_HEX alpha:1.0f]
+///Cell的选择颜色
+#define CELL_SELECTED_COLOR [UIColor colorWithHex:CELL_SELECTED_COLOR_HEX alpha:1.0f]
+///提示语颜色
+#define PROMPT_COLOR [UIColor colorWithHex:PROMPT_COLOR_HEX alpha:1.0f]
+///输入文本颜色
+#define INPUT_TEXT_COLOR [UIColor colorWithHex:INPUT_TEXT_COLOR_HEX alpha:1.0f]
+///Cell的标题颜色
+#define CELL_SUBJECT_COLOR [UIColor colorWithHex:CELL_SUBJECT_COLOR_HEX alpha:1.0f]
+///内容颜色
+#define CONTENT_TEXT_COLOR [UIColor colorWithHex:CONTENT_TEXT_COLOR_HEX alpha:1.0f]
+///辅助信息颜色
+#define ASSIST_COLOR [UIColor colorWithHex:ASSIST_COLOR_HEX alpha:1.0f]
+///辅助信息颜色2
+#define ASSIST_COLOR_2 [UIColor colorWithHex:ASSIST_COLOR_2_HEX alpha:1.0f]
+///系统默认字体的颜色
+#define SYS_FONT_COLOR [UIColor colorWithHex:Sys_Font_Color_Hex alpha:1.0f]
+
+
+///视频会员--主题色调
+#define Movie_Theme_Color [UIColor colorWithHex:@"cea05a" alpha:1.0f]
+///视频会员--购买按钮 边框
+#define Movie_Border_Color [UIColor colorWithHex:@"c89e5d" alpha:1.0f]
+
+/**
+ *  字体
+ *
+ */
+#define CommonTitleFont FONT_SYSTEM_SIZE(15)
+#define LargeSize18Font FONT_SYSTEM_SIZE(18)
+#define LargeSizeUpFont FONT_SYSTEM_SIZE(17)
+#define LargeSizeFont FONT_SYSTEM_SIZE(16)
+#define MediumFont FONT_SYSTEM_SIZE(15)
+#define TrumpetFont FONT_SYSTEM_SIZE(14)
+#define TrumpetDownFont FONT_SYSTEM_SIZE(13)
+#define Trumpet12Font FONT_SYSTEM_SIZE(12)
+
+
+
+
+
+
+#endif /* XSPrefixHeader_pch */
